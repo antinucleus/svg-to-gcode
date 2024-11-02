@@ -1,0 +1,15 @@
+diff --git a/node_modules/react-native-paper/src/components/Surface.tsx b/node_modules/react-native-paper/src/components/Surface.tsx
+index cc9f56b..f1841c1 100644
+--- a/node_modules/react-native-paper/src/components/Surface.tsx
++++ b/node_modules/react-native-paper/src/components/Surface.tsx
+@@ -166,7 +166,9 @@ const SurfaceIOS = forwardRef<
+     ref
+   ) => {
+     const [outerLayerViewStyles, innerLayerViewStyles] = React.useMemo(() => {
+-      const flattenedStyles = (StyleSheet.flatten(style) || {}) as ViewStyle;
++      const extraStyle:ViewStyle = {height:"100%"}
++
++      const flattenedStyles = (StyleSheet.flatten([style,extraStyle]) || {}) as ViewStyle;
+ 
+       const [filteredStyles, outerLayerStyles, borderRadiusStyles] =
+         splitStyles(
