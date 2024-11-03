@@ -1,12 +1,14 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
+import { NavigationContainer } from '@react-navigation/native';
 import * as NavigationBar from 'expo-navigation-bar';
+import { StatusBar } from 'expo-status-bar';
+import { PaperProvider, useTheme } from 'react-native-paper';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
+import { IS_ANDROID } from '@/config';
 
 import { Routes } from './routes';
-import { IS_ANDROID } from '@/config';
-import { PaperProvider, useTheme } from 'react-native-paper';
-import { StatusBar } from 'expo-status-bar';
 
 if (IS_ANDROID) {
   NavigationBar.setPositionAsync('absolute');
@@ -32,5 +34,6 @@ export const App = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    height: '100%',
   },
 });

@@ -2,6 +2,7 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack';
+
 import { SelectImageScreen } from '@/features/gcodeGenerator/screens';
 
 export type PrivateStackRoutesParamList = {
