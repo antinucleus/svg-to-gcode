@@ -1,2 +1,2 @@
-export { MoonStar } from "./MoonStar";
-export { Sun } from "./Sun";
+export { MoonStar } from './MoonStar';
+export { Sun } from './Sun';
