@@ -1,1 +1,6 @@
-export { NAV_THEME } from "./theme";
+import { Platform } from 'react-native';
+
+export const IS_ANDROID = Platform.OS === 'android';
+export const IS_IOS = Platform.OS === 'ios';
+
+export { APP_THEME, DARK_THEME, LIGHT_THEME } from './theme';
