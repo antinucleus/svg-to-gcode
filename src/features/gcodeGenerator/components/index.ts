@@ -1,2 +1,3 @@
 export { ImagePicker } from './ImagePicker';
-export { TextArea } from './TextArea';
+export { InitialSettings } from './InitialSettings';
+export { MoreSettings } from './MoreSettings';

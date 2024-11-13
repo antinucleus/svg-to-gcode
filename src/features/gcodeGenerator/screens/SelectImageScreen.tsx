@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 
-import { ImagePicker, TextArea } from '../components/';
+import { ImagePicker, InitialSettings, MoreSettings } from '../components/';
 import { useStepStore } from '../store';
 
 export const SelectImageScreen = () => {
@@ -25,7 +25,8 @@ export const SelectImageScreen = () => {
   return (
     <View style={styles.container}>
       {activeStep === 0 && <ImagePicker />}
-      {activeStep === 1 && <TextArea />}
+      {activeStep === 1 && <InitialSettings />}
+      {activeStep === 2 && <MoreSettings />}
 
       <View style={styles.buttonContainer}>
         {activeStep > 0 && (

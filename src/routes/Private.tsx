@@ -14,6 +14,7 @@ const Stack = createNativeStackNavigator<PrivateStackRoutesParamList>();
 
 const screenOptions: NativeStackNavigationOptions = {
   headerShown: true,
+  title: '',
   headerRight: () => <ToggleTheme />,
 };
 

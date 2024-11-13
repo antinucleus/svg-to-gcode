@@ -1,0 +1,1 @@
+export { MoreSettings } from './MoreSettings';
