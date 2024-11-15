@@ -1568,6 +1568,13 @@
     "@radix-ui/react-use-callback-ref" "1.1.0"
     "@radix-ui/react-use-controllable-state" "1.1.0"
 
+"@radix-ui/react-separator@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-separator/-/react-separator-1.1.0.tgz#ee0f4d86003b0e3ea7bc6ccab01ea0adee32663e"
+  integrity sha512-3uBAs+egzvJBDZAzvb/n4NxxOYpnspmWxO2u5NbZ8Y6FM/NdrGSF9bop3Cf6F6C71z1rTSn8KV0Fo2ZVd79lGA==
+  dependencies:
+    "@radix-ui/react-primitive" "2.0.0"
+
 "@radix-ui/react-slot@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.1.0.tgz#7c5e48c36ef5496d97b08f1357bb26ed7c714b84"
@@ -1801,6 +1808,11 @@
     prompts "^2.4.2"
     semver "^7.5.2"
 
+"@react-native-community/slider@4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.5.2.tgz#c3835788dbc1bd83d3778b83ca15533c805db149"
+  integrity sha512-DbFyCyI7rwl0FkBkp0lzEVp+5mNfS5qU/nM2sK2aSguWhj0Odkt1aKHP2iW/ljruOhgS/O4dEixXlne4OdZJDQ==
+
 "@react-native/assets-registry@0.74.87":
   version "0.74.87"
   resolved "https://registry.yarnpkg.com/@react-native/assets-registry/-/assets-registry-0.74.87.tgz#7dda64e48db14597e19e15f679e31abbb1c1fb4d"
@@ -2027,6 +2039,15 @@
   integrity sha512-wNxXu45wzE12M0LYPR6g2DYVZsD4zf9EiXecP46pJfC8XEhUPhcgzAE8oa1xfEUU+P8O29ZIWoK/CPtAodFBfw==
   dependencies:
     "@radix-ui/react-label" "^2.1.0"
+    "@rn-primitives/slot" "1.1.0"
+    "@rn-primitives/types" "1.1.0"
+
+"@rn-primitives/separator@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@rn-primitives/separator/-/separator-1.1.0.tgz#5774612c35b806999aaecbb3d04eae6dd4e0fea4"
+  integrity sha512-U38RYkC/PI3P8TbSvSwdVjTer/eqel9GlfY1E5I0XHvn0o7A0ca+he6ud4KvJeanT0CJma1OFKBOE7n6r/DI/Q==
+  dependencies:
+    "@radix-ui/react-separator" "^1.1.0"
     "@rn-primitives/slot" "1.1.0"
     "@rn-primitives/types" "1.1.0"
 

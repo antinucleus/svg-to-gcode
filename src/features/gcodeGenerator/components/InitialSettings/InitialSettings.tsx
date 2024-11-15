@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { Input } from '@/components/ui/input';
+import { Text } from '@/components/ui/text';
 
 export const InitialSettings = () => {
   const [text, setText] = useState('');
@@ -17,7 +18,9 @@ export const InitialSettings = () => {
 
   return (
     <View className="flex-1 p-10 items-center justify-center">
-      <Text className="font-semibold text-primary text-xl mb-16">Enter Height & Width Values</Text>
+      <Text className="font-semibold text-primary text-xl mb-16">
+        Enter Height and Width Values
+      </Text>
 
       <View className="flex-row gap-5">
         <Input
