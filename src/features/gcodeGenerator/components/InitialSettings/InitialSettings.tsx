@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 
 import { Input } from '@/components/ui/input';
-import { Text } from '@/components/ui/text';
+import { Separator } from '@/components/ui/separator';
+
+import { PageInfo } from '../PageInfo';
 
 export const InitialSettings = () => {
   const [text, setText] = useState('');
 
   const handleTextChange = (value: string) => {
-    console.log({ value });
     const valueToNum = Number(value);
 
     if (isNaN(valueToNum)) return;
@@ -17,12 +18,16 @@ export const InitialSettings = () => {
   };
 
   return (
-    <View className="flex-1 p-10 items-center justify-center">
-      <Text className="font-semibold text-primary text-xl mb-16">
-        Enter Height and Width Values
-      </Text>
+    <View className="flex-1 p-2">
+      <PageInfo
+        title="Initial Settings"
+        description={`Height and width value of the bed. You can supply both values.
+If you supply one value, other one will be calculated according to the aspect ratio of svg image.`}
+      />
 
-      <View className="flex-row gap-5">
+      <Separator className="mt-5" orientation="horizontal" />
+
+      <View className="flex-1 flex-row gap-5 items-center justify-center">
         <Input
           className="px-8 font-extrabold min-w-32 text-center"
           keyboardType="numeric"

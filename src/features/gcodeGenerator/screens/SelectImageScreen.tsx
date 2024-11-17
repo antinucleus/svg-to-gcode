@@ -23,7 +23,7 @@ export const SelectImageScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View className="flex-1">
       {activeStep === 0 && <ImagePicker />}
       {activeStep === 1 && <InitialSettings />}
       {activeStep === 2 && <MoreSettings />}
@@ -34,6 +34,7 @@ export const SelectImageScreen = () => {
             <Text>Previous</Text>
           </Button>
         )}
+
         {activeStep === 0 && <View />}
 
         <Button variant="ghost" disabled={!isNextButtonActive()} onPress={handleNextPress}>
@@ -45,15 +46,11 @@ export const SelectImageScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    height: '100%',
-  },
   buttonContainer: {
+    position: 'absolute',
     bottom: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    position: 'absolute',
     width: '100%',
   },
 });

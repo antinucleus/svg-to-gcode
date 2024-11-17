@@ -1,77 +1,61 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import Slider from '@react-native-community/slider';
-
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
-import { Text } from '@/components/ui/text';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+
+import { useGcodeSettingsStore } from '../../store';
+import { OptionItem } from '../OptionItem';
+import { PageInfo } from '../PageInfo';
+import { SampleCountSlider } from '../SampleCountSlider';
+import { UnitToggle } from '../UnitToggle';
 
 export const MoreSettings = () => {
-  const [value, setValue] = React.useState<string | undefined>(undefined);
-  const [checked, setChecked] = React.useState(false);
+  const lineNumbering = useGcodeSettingsStore.use.lineNumbering();
+  const fill = useGcodeSettingsStore.use.fill();
+  const setGcodeSettings = useGcodeSettingsStore.use.setGcodeSettings();
+
+  const handleLineNumberingChange = (value: boolean) => {
+    setGcodeSettings({ lineNumbering: value });
+  };
+
+  const handleFillChange = (value: boolean) => {
+    setGcodeSettings({ fill: value });
+  };
+
   return (
-    <View className="flex-1 p-5 gap-5">
-      <View>
-        <Text className="font-medium leading-none native:text-xl">Extra Options</Text>
-        <Text className="text-sm text-muted-foreground">Set other options</Text>
-      </View>
-
-      <View className="w-full flex-row items-center justify-between">
-        <Text
-          className="text-lg font-semibold"
-          nativeID="airplane-mode"
-          onPress={() => {
-            setChecked((prev) => !prev);
-          }}>
-          Unit
-        </Text>
-        <View className="justify-center items-center">
-          <ToggleGroup value={value} onValueChange={setValue} type="single">
-            <ToggleGroupItem value="bold" aria-label="Toggle bold">
-              <Text>mm</Text>
-            </ToggleGroupItem>
-            <ToggleGroupItem value="italic" aria-label="Toggle italic">
-              <Text>in</Text>
-            </ToggleGroupItem>
-          </ToggleGroup>
-        </View>
-      </View>
+    <View className="flex-1 p-2 gap-5">
+      <PageInfo
+        title="Extra Options"
+        description="Set other options. You can get info by clicking the info icon near options."
+      />
 
       <Separator orientation="horizontal" />
 
-      <View className="flex-row items-center justify-between">
-        <Label
+      <OptionItem title="Unit">
+        <UnitToggle />
+      </OptionItem>
+
+      <OptionItem title="Sample Count">
+        <SampleCountSlider />
+      </OptionItem>
+
+      <OptionItem title="Line Numbering">
+        <Switch
+          checked={lineNumbering}
+          onCheckedChange={handleLineNumberingChange}
           nativeID="airplane-mode"
-          onPress={() => {
-            setChecked((prev) => !prev);
-          }}>
-          Line Numbering
-        </Label>
-        <Switch checked={checked} onCheckedChange={setChecked} nativeID="airplane-mode" />
-      </View>
+        />
+      </OptionItem>
 
-      <Separator orientation="horizontal" />
+      <OptionItem title="Fill Bed">
+        <Switch checked={fill} onCheckedChange={handleFillChange} nativeID="airplane-mode" />
+      </OptionItem>
 
-      <View className="flex-row items-center justify-between">
-        <Label
-          nativeID="airplane-mode"
-          onPress={() => {
-            setChecked((prev) => !prev);
-          }}>
-          Fill Bed
-        </Label>
-        <Switch checked={checked} onCheckedChange={setChecked} nativeID="airplane-mode" />
-      </View>
-      <Separator orientation="horizontal" />
-
-      <View className="flex-row items-center justify-between">
-        <Label>Center X</Label>
+      <OptionItem title="Center X">
         <Input
-          className="font-extrabold min-w-24 text-center"
+          className=" font-extrabold min-w-24 text-center"
           keyboardType="numeric"
           // value={text}
           placeholder="X"
@@ -79,11 +63,9 @@ export const MoreSettings = () => {
           aria-errormessage="inputError"
           // onChangeText={handleTextChange}
         />
-      </View>
-      <Separator orientation="horizontal" />
+      </OptionItem>
 
-      <View className="flex-row items-center justify-between">
-        <Text className="text-lg">Center Y</Text>
+      <OptionItem title="Center Y" last>
         <Input
           className=" font-extrabold min-w-24 text-center"
           keyboardType="numeric"
@@ -93,23 +75,7 @@ export const MoreSettings = () => {
           aria-errormessage="inputError"
           // onChangeText={handleTextChange}
         />
-      </View>
-      <Separator orientation="horizontal" />
-
-      <View className="flex-row items-center justify-between">
-        <Label>Sample Count</Label>
-        <Slider
-          style={{ width: 100 }}
-          step={1}
-          onSlidingComplete={(value) => console.log(value)}
-          onValueChange={(value) => console.log(value)}
-          minimumValue={0}
-          maximumValue={100}
-          minimumTrackTintColor="#beffde"
-          maximumTrackTintColor="gray"
-          thumbTintColor="gray"
-        />
-      </View>
+      </OptionItem>
     </View>
   );
 };
