@@ -4,7 +4,7 @@ import {
 } from '@react-navigation/native-stack';
 
 import { ToggleTheme } from '@/components';
-import { SelectImageScreen } from '@/features/gcodeGenerator/screens';
+import { GcodeSetupScreen } from '@/features/gcodeGenerator/screens';
 
 export type PrivateStackRoutesParamList = {
   SelectImage: undefined;
@@ -21,7 +21,7 @@ const screenOptions: NativeStackNavigationOptions = {
 export const Private = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="SelectImage" component={SelectImageScreen} />
+      <Stack.Screen name="SelectImage" component={GcodeSetupScreen} />
     </Stack.Navigator>
   );
 };

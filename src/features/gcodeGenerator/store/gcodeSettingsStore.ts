@@ -5,11 +5,11 @@ import { createSelectors } from '@/store/storeSelector';
 import { IUnit } from '../types';
 
 type GcodeSettingsState = {
-  centerX: number;
-  centerY: number;
-  height: number;
+  centerX: string;
+  centerY: string;
+  height: string;
+  width: string;
   sampleCount: number;
-  width: number;
   fill: boolean;
   lineNumbering: boolean;
   unit: IUnit;
@@ -20,11 +20,11 @@ type GcodeSettingsAction = {
 };
 
 const initialValues: GcodeSettingsState = {
-  centerX: 0,
-  centerY: 0,
-  height: 0,
+  centerX: '',
+  centerY: '',
+  height: '',
+  width: '',
   sampleCount: 0,
-  width: 0,
   fill: false,
   lineNumbering: false,
   unit: 'mm',

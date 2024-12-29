@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 
+import { useGcodeSettingsStore, useStepStore } from '../../store';
 import { PageInfo } from '../PageInfo';
 
 export const InitialSettings = () => {
-  const [text, setText] = useState('');
+  const activeStep = useStepStore.use.activeStep();
+  const setSteps = useStepStore.use.setSteps();
+  const height = useGcodeSettingsStore.use.height();
+  const width = useGcodeSettingsStore.use.width();
+  const setGcodeSettings = useGcodeSettingsStore.use.setGcodeSettings();
 
-  const handleTextChange = (value: string) => {
+  useEffect(() => {
+    setSteps({ [activeStep]: !!height || !!width });
+  }, [activeStep, height, setSteps, width]);
+
+  const handleHeightTextChange = (value: string) => {
     const valueToNum = Number(value);
 
     if (isNaN(valueToNum)) return;
 
-    setText(value);
+    setGcodeSettings({ height: value.trim() });
+  };
+
+  const handleWidthTextChange = (value: string) => {
+    const valueToNum = Number(value);
+
+    if (isNaN(valueToNum)) return;
+
+    setGcodeSettings({ width: value.trim() });
   };
 
   return (
@@ -29,23 +46,25 @@ If you supply one value, other one will be calculated according to the aspect ra
 
       <View className="flex-1 flex-row gap-5 items-center justify-center">
         <Input
-          className="px-8 font-extrabold min-w-32 text-center"
+          className="px-8 font-extrabold min-w-36 text-center"
           keyboardType="numeric"
-          value={text}
+          maxLength={5}
+          value={height}
           placeholder="Height"
           aria-labelledby="inputLabel"
           aria-errormessage="inputError"
-          onChangeText={handleTextChange}
+          onChangeText={handleHeightTextChange}
         />
 
         <Input
-          className="px-8 font-extrabold min-w-32 text-center"
+          className="px-8 font-extrabold min-w-36 text-center"
           keyboardType="numeric"
-          value={text}
+          maxLength={5}
+          value={width}
           placeholder="Width"
           aria-labelledby="inputLabel"
           aria-errormessage="inputError"
-          onChangeText={handleTextChange}
+          onChangeText={handleWidthTextChange}
         />
       </View>
     </View>

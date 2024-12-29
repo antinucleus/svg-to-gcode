@@ -1,1 +1,1 @@
-export { SelectImageScreen } from './SelectImageScreen';
+export { GcodeSetupScreen } from './GcodeSetupScreen';
